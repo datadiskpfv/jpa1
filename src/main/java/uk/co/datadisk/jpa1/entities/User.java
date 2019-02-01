@@ -20,7 +20,7 @@ public class User {
     @Size(min = 5, max = 20)
     private String username;
 
-    @Basic
+    @Basic(optional = false)                     // used to change fetchType or optional which means if field can be NULL or NOT NULL
     private String email;
 
     @Enumerated(EnumType.STRING)
