@@ -11,7 +11,7 @@ import java.util.Date;
 @Table(name = "users")
 public class User {
 
-//    @NotNull                      - prevents the value of the object from being null.
+//    @NotNull                      - prevents the value of the object from being null, a validator of the field not the DB.
 //    @Basic (optional = false)     - indicates that the value of the field or property can not be null.
 //                                    It can be used to generate the database schema from the entity.
 //    @Column (nullable = false)    - means that the field in the database table can not be null.
