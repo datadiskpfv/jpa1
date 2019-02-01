@@ -22,7 +22,7 @@ public class User {
 
     @NotNull
     @Column(unique = true)
-    @Size(min = 5, max = 20)
+    @Size(min = 5, max = 20)                    // also caps the database as well so this would be varchar(20)
     private String username;
 
     @Basic(optional = false)                     // used to change fetchType or optional which means if field can be NULL or NOT NULL
@@ -32,20 +32,20 @@ public class User {
     private Gender gender;
 
     @CreationTimestamp
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.TIMESTAMP)                       // db will create timestamp type
     @Column(name = "date_created", updatable = false)
     private Date dateCreated;
 
-    @Transient      // dont create in db
-    @JsonIgnore     // dont send data back to viewer if using REST
+    @Transient                                              // dont create in db
+    @JsonIgnore                                             // dont send data back to viewer if using REST
     private String youWontSeeThisInTable;
 
-    //@Lob
+    //@Lob                                                  // by default this is a CLOB (on H2 db)
     @Column(name = "description", columnDefinition="CLOB")
     private String description;
 
     //@Lob
-    @Column(name = "photo", columnDefinition="BLOB")
+    @Column(name = "photo", columnDefinition="BLOB")        // we can specify the LOB type
     private byte[] photo;
 
     ///////////////////////////////////////////////
