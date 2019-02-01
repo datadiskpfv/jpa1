@@ -43,6 +43,10 @@ public class User {
     @Column(name = "photo", columnDefinition="BLOB")
     private byte[] photo;
 
+    ///////////////////////////////////////////////
+    // Constructors, Getter/Setters, toString, etc
+    ///////////////////////////////////////////////
+
     public User() { }
 
     public User(String username, String email, Gender gender) {
