@@ -1,6 +1,7 @@
 package uk.co.datadisk.jpa1.controllers;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import uk.co.datadisk.jpa1.entities.User;
@@ -21,5 +22,11 @@ public class UserController {
     @GetMapping("listAllUsers")
     public List<User> listAllUsers() {
         return userService.findAll();
+    }
+
+    @GetMapping("findUser/{id}")
+    public User findUser(@PathVariable Long id) {
+        User user = userService.findById(id);
+        return user;
     }
 }

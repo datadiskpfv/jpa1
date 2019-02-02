@@ -1,6 +1,7 @@
 package uk.co.datadisk.jpa1.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.CreationTimestamp;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -47,6 +48,14 @@ public class User {
     //@Lob
     @Column(name = "photo", columnDefinition="BLOB")        // we can specify the LOB type
     private byte[] photo;
+
+    ///////////////////////////////////////////////
+    // mapping relationships
+    ///////////////////////////////////////////////
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "user"})
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "nat_id")
+    private NationalInsuranceNumber nationalInsuranceNumber;
 
     ///////////////////////////////////////////////
     // Constructors, Getter/Setters, toString, etc
@@ -122,6 +131,14 @@ public class User {
 
     public void setPhoto(byte[] photo) {
         this.photo = photo;
+    }
+
+    public NationalInsuranceNumber getNationalInsuranceNumber() {
+        return nationalInsuranceNumber;
+    }
+
+    public void setNationalInsuranceNumber(NationalInsuranceNumber nationalInsuranceNumber) {
+        this.nationalInsuranceNumber = nationalInsuranceNumber;
     }
 
     @Override
