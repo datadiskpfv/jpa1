@@ -2,16 +2,19 @@ package uk.co.datadisk.jpa1.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.LazyToOne;
+import org.hibernate.annotations.LazyToOneOption;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.awt.print.Book;
 
 @Entity
 @Table(name = "national_insurance_numbers")
 public class NationalInsuranceNumber {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id")
     private Long id;
 
     @NotNull
@@ -21,10 +24,13 @@ public class NationalInsuranceNumber {
     ///////////////////////////////////////////////
     // mapping relationships
     ///////////////////////////////////////////////
-    //@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "nationalInsuranceNumber"})
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "nationalInsuranceNumber"})
     @JsonIgnore
-    @OneToOne(mappedBy = "nationalInsuranceNumber", fetch = FetchType.LAZY)
+    @MapsId
+    @OneToOne(mappedBy = "nationalInsuranceNumber")
+    @JoinColumn(name = "user_id")
     private User user;
+
 
     ///////////////////////////////////////////////
     // Constructors, Getter/Setters, toString, etc

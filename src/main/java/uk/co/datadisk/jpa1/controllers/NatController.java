@@ -23,7 +23,8 @@ public class NatController {
 
     @GetMapping("listAllNats")
     public List<NationalInsuranceNumber> listAllNats() {
-        return natService.findAll();
+        List<NationalInsuranceNumber> nationalInsuranceNumbers = natService.findAll();
+        return nationalInsuranceNumbers;
     }
 
     @GetMapping("findNat/{id}")

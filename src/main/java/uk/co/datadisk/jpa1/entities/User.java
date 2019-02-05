@@ -53,8 +53,8 @@ public class User {
     // mapping relationships
     ///////////////////////////////////////////////
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "user"})
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "nat_id")
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @PrimaryKeyJoinColumn
     private NationalInsuranceNumber nationalInsuranceNumber;
 
     ///////////////////////////////////////////////
