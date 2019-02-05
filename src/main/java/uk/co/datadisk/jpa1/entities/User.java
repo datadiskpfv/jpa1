@@ -2,11 +2,14 @@ package uk.co.datadisk.jpa1.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.annotations.CreationTimestamp;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -52,10 +55,27 @@ public class User {
     ///////////////////////////////////////////////
     // mapping relationships
     ///////////////////////////////////////////////
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "user"})
-    @OneToOne(cascade = CascadeType.ALL)
+    //@JsonIgnore
+    //@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "user"})
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @PrimaryKeyJoinColumn
     private NationalInsuranceNumber nationalInsuranceNumber;
+
+    @JsonIgnoreProperties("users")
+    @JsonIgnore
+    @ManyToMany                   // by default LAZY loaded
+    @JoinTable(
+            name="user_role",
+            joinColumns={@JoinColumn(name="user_id")},
+            inverseJoinColumns={@JoinColumn(name = "role_id")}
+    )
+    private Set<Role> roles = new HashSet<>();
+
+    @JsonIgnoreProperties("users")
+    @JsonIgnore               // if you comment this you get a uk.co.datadisk.jpa1.entities.Address$HibernateProxy error
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "address_id")
+    private Address address;
 
     ///////////////////////////////////////////////
     // Constructors, Getter/Setters, toString, etc
@@ -139,6 +159,22 @@ public class User {
 
     public void setNationalInsuranceNumber(NationalInsuranceNumber nationalInsuranceNumber) {
         this.nationalInsuranceNumber = nationalInsuranceNumber;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Role role) {
+        roles.add(role);
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     @Override

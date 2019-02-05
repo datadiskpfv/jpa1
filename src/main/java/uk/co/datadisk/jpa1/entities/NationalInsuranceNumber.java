@@ -7,6 +7,7 @@ import org.hibernate.annotations.LazyToOneOption;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.awt.*;
 import java.awt.print.Book;
 
 @Entity
@@ -23,9 +24,9 @@ public class NationalInsuranceNumber {
     ///////////////////////////////////////////////
     // mapping relationships
     ///////////////////////////////////////////////
-    //@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "nationalInsuranceNumber"})
     @JsonIgnore
-    @OneToOne
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "nationalInsuranceNumber"})
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id")
     @MapsId
     private User user;

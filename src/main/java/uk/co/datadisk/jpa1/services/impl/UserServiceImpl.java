@@ -33,11 +33,11 @@ public class UserServiceImpl implements UserService {
     public List<User> findAll() {
 
         List<User> users = userRepository.findAll();
-        System.out.println("Found Users");
-        System.out.println("-----------------------------------");
-
-        for(User user : users)
-            System.out.println(user.toString());
+//        System.out.println("Found Users");
+//        System.out.println("-----------------------------------");
+//
+//        for(User user : users)
+//            System.out.println(user.toString());
 
         return users;
     }

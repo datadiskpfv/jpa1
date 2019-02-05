@@ -32,10 +32,10 @@ public class NatServiceImpl implements NatService {
     public List<NationalInsuranceNumber> findAll() {
 
         List<NationalInsuranceNumber> nationalInsuranceNumbers = natRepository.findAll();
-        System.out.println("Found Users");
-        System.out.println("-----------------------------------");
-        for(NationalInsuranceNumber nat : nationalInsuranceNumbers)
-            System.out.println(nat.getId() + " " + nat.getNatNumber());
+//        System.out.println("Found Users");
+//        System.out.println("-----------------------------------");
+//        for(NationalInsuranceNumber nat : nationalInsuranceNumbers)
+//            System.out.println(nat.getId() + " " + nat.getNatNumber());
 
         return nationalInsuranceNumbers;
     }
