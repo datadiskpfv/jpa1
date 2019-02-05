@@ -14,7 +14,6 @@ import java.awt.print.Book;
 public class NationalInsuranceNumber {
 
     @Id
-    @Column(name = "user_id")
     private Long id;
 
     @NotNull
@@ -24,11 +23,11 @@ public class NationalInsuranceNumber {
     ///////////////////////////////////////////////
     // mapping relationships
     ///////////////////////////////////////////////
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "nationalInsuranceNumber"})
+    //@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "nationalInsuranceNumber"})
     @JsonIgnore
+    @OneToOne
+    @JoinColumn(name = "id")
     @MapsId
-    @OneToOne(mappedBy = "nationalInsuranceNumber", fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
     private User user;
 
 
