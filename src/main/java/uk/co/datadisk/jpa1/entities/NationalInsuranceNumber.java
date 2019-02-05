@@ -27,7 +27,7 @@ public class NationalInsuranceNumber {
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "nationalInsuranceNumber"})
     @JsonIgnore
     @MapsId
-    @OneToOne(mappedBy = "nationalInsuranceNumber")
+    @OneToOne(mappedBy = "nationalInsuranceNumber", fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
 
