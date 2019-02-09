@@ -7,9 +7,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name = "users")
@@ -76,6 +74,10 @@ public class User {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "address_id")
     private Address address;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OrderBy("createdOn ASC")
+    private List<Department> departments = new ArrayList<>();
 
     ///////////////////////////////////////////////
     // Constructors, Getter/Setters, toString, etc
@@ -175,6 +177,14 @@ public class User {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public List<Department> getDepartments() {
+        return departments;
+    }
+
+    public void addDepartment(Department department) {
+        departments.add(department);
     }
 
     @Override
