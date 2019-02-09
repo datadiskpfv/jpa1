@@ -75,9 +75,11 @@ public class User {
     @JoinColumn(name = "address_id")
     private Address address;
 
+    @JsonIgnoreProperties("user")
+    //@JsonIgnore
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     @OrderBy("createdOn ASC")
-    private List<Department> departments = new ArrayList<>();
+    private List<UserDepartment> userDepartments = new ArrayList<>();
 
     ///////////////////////////////////////////////
     // Constructors, Getter/Setters, toString, etc
@@ -179,12 +181,12 @@ public class User {
         this.address = address;
     }
 
-    public List<Department> getDepartments() {
-        return departments;
+    public List<UserDepartment> getUserDepartments() {
+        return userDepartments;
     }
 
-    public void addDepartment(Department department) {
-        departments.add(department);
+    public void addDepartment(UserDepartment userDepartment) {
+        userDepartments.add(userDepartment);
     }
 
     @Override

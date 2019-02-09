@@ -34,3 +34,13 @@ INSERT INTO USER_ROLE (user_id, role_id) VALUES ( 1002, 5001 );
 INSERT INTO USER_ROLE (user_id, role_id) VALUES ( 1003, 5001 );
 INSERT INTO USER_ROLE (user_id, role_id) VALUES ( 1003, 5002 );
 
+INSERT INTO DEPARTMENTS (id, dept_name) VALUES ( 6000, 'Finance' );
+INSERT INTO DEPARTMENTS (id, dept_name) VALUES ( 6001, 'IT' );
+INSERT INTO DEPARTMENTS (id, dept_name) VALUES ( 6002, 'HR' );
+
+INSERT INTO USER_DEPARTMENTS (user_id, department_id, created_on) VALUES ( 1000, 6001, sysdate() );
+INSERT INTO USER_DEPARTMENTS (user_id, department_id, created_on) VALUES ( 1000, 6002, sysdate() );
+INSERT INTO USER_DEPARTMENTS (user_id, department_id, created_on) VALUES ( 1001, 6000, sysdate() );
+INSERT INTO USER_DEPARTMENTS (user_id, department_id, created_on) VALUES ( 1002, 6000, sysdate() );
+INSERT INTO USER_DEPARTMENTS (user_id, department_id, created_on) VALUES ( 1003, 6002, sysdate() );
+
