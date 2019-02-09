@@ -20,13 +20,13 @@ public class RoleController {
     }
 
     @GetMapping("listAllRoles")
-    public List<Role> listAllNats() {
+    public List<Role> listAllRoles() {
         List<Role> Roles = roleService.findAll();
         return Roles;
     }
 
     @GetMapping("findRole/{id}")
-    public Role findUser(@PathVariable Long id) {
+    public Role findRole(@PathVariable Long id) {
         Role role = roleService.findById(id);
         return role;
     }
