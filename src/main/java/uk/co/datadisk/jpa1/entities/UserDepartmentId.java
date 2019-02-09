@@ -27,4 +27,12 @@ public class UserDepartmentId implements Serializable {
     public Long getDepartmentId() {
         return departmentId;
     }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public void setDepartmentId(Long departmentId) {
+        this.departmentId = departmentId;
+    }
 }

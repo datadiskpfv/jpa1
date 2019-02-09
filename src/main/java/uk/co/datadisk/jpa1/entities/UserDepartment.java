@@ -32,13 +32,13 @@ public class UserDepartment {
         this.id = new UserDepartmentId(user.getId(), department.getId());
     }
 
-//    public UserDepartmentId getId() {
-//        return id;
-//    }
-//
-//    public void setId(UserDepartmentId id) {
-//        this.id = id;
-//    }
+    public UserDepartmentId getId() {
+        return id;
+    }
+
+    public void setId(UserDepartmentId id) {
+        this.id = id;
+    }
 
     public User getUser() {
         return user;

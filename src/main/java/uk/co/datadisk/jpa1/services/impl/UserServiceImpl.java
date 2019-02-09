@@ -1,8 +1,10 @@
 package uk.co.datadisk.jpa1.services.impl;
 
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import uk.co.datadisk.jpa1.entities.User;
+import uk.co.datadisk.jpa1.entities.UserDepartment;
 import uk.co.datadisk.jpa1.exceptions.NotFoundException;
 import uk.co.datadisk.jpa1.repositories.UserRepository;
 import uk.co.datadisk.jpa1.services.UserService;
@@ -52,6 +54,4 @@ public class UserServiceImpl implements UserService {
     public User findByUsernameDepartment(String username, String department) {
         return userRepository.findByUsernameAndUserDepartmentsDepartmentName(username, department);
     }
-
-
 }
