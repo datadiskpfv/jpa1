@@ -13,6 +13,8 @@ public interface UserService {
     // READ
     User findById(Long id);
     List<User> findAll();
+    User findByUsername(String name);
+    User findByUsernameDepartment(String name, String department);
 
     // UPDATE
 

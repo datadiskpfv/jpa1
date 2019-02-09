@@ -6,4 +6,8 @@ import uk.co.datadisk.jpa1.entities.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
+
+    User findByUsername(String name);
+
+    User findByUsernameAndUserDepartmentsDepartmentName(String name, String department);
 }

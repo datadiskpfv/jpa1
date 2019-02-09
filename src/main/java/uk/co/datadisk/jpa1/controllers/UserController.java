@@ -29,4 +29,16 @@ public class UserController {
         User user = userService.findById(id);
         return user;
     }
+
+    @GetMapping("findUsername/{username}")
+    public User findUsername(@PathVariable String username) {
+        User user = userService.findByUsername(username);
+        return user;
+    }
+
+    @GetMapping("findUsername/{username}/{department}")
+    public User findUsername(@PathVariable String username, @PathVariable String department) {
+        User user = userService.findByUsernameDepartment(username, department);
+        return user;
+    }
 }
