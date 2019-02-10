@@ -29,6 +29,7 @@ public class UserController {
         List<User> users = userRepository.findAll();
 
         model.addAttribute("users", users);
+        model.addAttribute("testParameter", "Test Parameter");
 
         return "user/usersList";
     }
