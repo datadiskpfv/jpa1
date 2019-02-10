@@ -47,6 +47,7 @@ public class UserCriteriaRepository {
         List<Predicate> predicates = new ArrayList<>();
 
         // use IF or SWITCH statements to build the query with as many where clauses as you like
+        // there are lots of different criteria's : equal, lessThan, greaterThan, like, etc
         Predicate predicate1 = builder.equal(root.get("username"), username);
         Predicate predicate2 = builder.equal(root.get("gender"), gender);
         predicates.add(predicate1);
