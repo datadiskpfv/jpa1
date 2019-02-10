@@ -13,6 +13,7 @@ public interface NatService {
 
     // READ
     NationalInsuranceNumber findById(Long id);
+
     List<NationalInsuranceNumber> findAll();
 
     // UPDATE

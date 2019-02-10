@@ -12,6 +12,7 @@ public interface RoleService {
 
     // READ
     Role findById(Long id);
+
     List<Role> findAll();
 
     // UPDATE
