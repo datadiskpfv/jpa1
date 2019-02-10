@@ -9,6 +9,7 @@ import uk.co.datadisk.jpa1.entities.Gender;
 import uk.co.datadisk.jpa1.entities.User;
 import uk.co.datadisk.jpa1.entities.UserDepartment;
 import uk.co.datadisk.jpa1.entities.UserDepartmentId;
+import uk.co.datadisk.jpa1.repositories.UserCriteriaRepository;
 import uk.co.datadisk.jpa1.repositories.UserDepartmentRepository;
 import uk.co.datadisk.jpa1.repositories.UserRepository;
 import uk.co.datadisk.jpa1.services.UserService;
@@ -22,11 +23,13 @@ public class UserController {
     private UserService userService;
     private UserRepository userRepository;
     private UserDepartmentRepository userDepartmentRepository;
+    private UserCriteriaRepository userCriteriaRepository;
 
-    public UserController(UserService userService, UserRepository userRepository, UserDepartmentRepository userDepartmentRepository) {
+    public UserController(UserService userService, UserRepository userRepository, UserDepartmentRepository userDepartmentRepository, UserCriteriaRepository userCriteriaRepository) {
         this.userService = userService;
         this.userRepository = userRepository;
         this.userDepartmentRepository = userDepartmentRepository;
+        this.userCriteriaRepository = userCriteriaRepository;
     }
 
     @GetMapping("listAllUsers")
@@ -84,6 +87,22 @@ public class UserController {
         Example<UserDepartment> userDepartmentExample = Example.of(userDepartment);
 
         List<User> user = userDepartmentRepository.findAll(userDepartmentExample);
+        return user;
+    }
+
+    @GetMapping("findUserByCriteria/{username}")
+    public User findUserByCriteria(@PathVariable String username) {
+
+        System.out.println("Finding user using criteria builder");
+        User user = userCriteriaRepository.findUser(username);
+        return user;
+    }
+
+    @GetMapping("findUserByPredicate/{username}/{gender}")
+    public User findUserByCriteria(@PathVariable String username, @PathVariable Gender gender) {
+
+        System.out.println("Finding user using criteria and predicate builder");
+        User user = userCriteriaRepository.findUserPredicate(username, gender);
         return user;
     }
 }
