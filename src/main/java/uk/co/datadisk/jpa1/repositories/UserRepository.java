@@ -24,4 +24,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
             @Param("username") String username,
             @Param("gender") Gender gender);
 
+    User fetchByEmailAddress(@Param("email") String email);
+
 }

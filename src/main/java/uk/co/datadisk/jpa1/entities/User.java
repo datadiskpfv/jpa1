@@ -11,6 +11,9 @@ import java.util.*;
 
 @Entity
 @Table(name = "users")
+@NamedQuery(name = "User.fetchByEmailAddress",
+        query = "SELECT u FROM User u WHERE u.email =:email "
+)
 public class User {
 
 //    @NotNull                      - prevents the value of the object from being null, a validator of the field not the DB.

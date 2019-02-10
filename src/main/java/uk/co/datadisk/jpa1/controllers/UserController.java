@@ -105,4 +105,12 @@ public class UserController {
         User user = userCriteriaRepository.findUserPredicate(username, gender);
         return user;
     }
+
+    @GetMapping("findUserByEmailAddress/{email}")
+    public User findUserByEmailAddress(@PathVariable String email) {
+
+        System.out.println("Finding user using named query");
+        User user = userRepository.fetchByEmailAddress(email);
+        return user;
+    }
 }
