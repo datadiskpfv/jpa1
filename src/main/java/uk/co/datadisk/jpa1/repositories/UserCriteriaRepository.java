@@ -24,6 +24,9 @@ public class UserCriteriaRepository {
 
     public User findUser(String username) {
 
+        // Short version
+        //List<User> users = em.createQuery(“SELECT u FROM User u”).getResultList();
+
         CriteriaBuilder builder = em.getCriteriaBuilder();
         CriteriaQuery<User> criteria = builder.createQuery(User.class);
         Root<User> root = criteria.from(User.class);
